@@ -24,16 +24,19 @@ import java.util.ArrayList;
 public class WhatIsNewDialogFragment extends DialogFragment {
 
     private static final String NEW_FEATURE_ITEM_LIST = "newFeatureItemList";
+    private static final String DIALOG_TITLE = "dialogTitle";
 
     private ViewPager mImageViewPager;
     private ArrayList<NewFeatureItem> mNewFeatureItemArrayList;
+    private String mDialogTitle;
 
-    public static WhatIsNewDialogFragment newInstance(ArrayList<NewFeatureItem> newFeatureItemArrayList) {
+    public static WhatIsNewDialogFragment newInstance(ArrayList<NewFeatureItem> newFeatureItemArrayList, String dialogTitle) {
         WhatIsNewDialogFragment f = new WhatIsNewDialogFragment();
 
         // Supply num input as an argument.
         Bundle args = new Bundle();
         args.putParcelableArrayList(NEW_FEATURE_ITEM_LIST, newFeatureItemArrayList);
+        args.putString(DIALOG_TITLE, dialogTitle);
         f.setArguments(args);
 
         return f;
@@ -46,13 +49,14 @@ public class WhatIsNewDialogFragment extends DialogFragment {
         View view = getActivity().getLayoutInflater().inflate(R.layout.newfeaturedialog, null);
 
         mNewFeatureItemArrayList = getArguments().getParcelableArrayList(NEW_FEATURE_ITEM_LIST);
+        mDialogTitle = getArguments().getString(DIALOG_TITLE);
         mImageViewPager = (ViewPager) view.findViewById(R.id.viewPager);
 
         initPage();
 
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle("1.2.0 Versiyonundaki Yenilikler")
+                .setTitle(mDialogTitle)
                 .setPositiveButton("Kapat", null)
                 .setNegativeButton("Sonra Tekrar Göster", null)
                 .create();

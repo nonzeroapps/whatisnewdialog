@@ -13,16 +13,21 @@ import java.util.ArrayList;
  * Created by berkayturanci on 01/08/2017.
  */
 
-public class NewItemDialog {
+public final class NewItemDialog {
 
     private static volatile NewItemDialog mNewItemDialog;
 
     private AppCompatActivity mActivity;
     private ArrayList<NewFeatureItem> mNewFeatureItemArrayList;
+    private String mDialogTitle;
 
     public static NewItemDialog init(@NonNull AppCompatActivity activity) {
         if (mNewItemDialog == null) {
-            mNewItemDialog = new NewItemDialog(activity);
+            synchronized (NewItemDialog.class) {
+                if (mNewItemDialog == null) {
+                    mNewItemDialog = new NewItemDialog(activity);
+                }
+            }
         }
 
         return mNewItemDialog;
@@ -30,6 +35,11 @@ public class NewItemDialog {
 
     private NewItemDialog(@NonNull AppCompatActivity activity) {
         mActivity = activity;
+    }
+
+    public NewItemDialog setDialogTitle(String dialogTitle) {
+        mDialogTitle = dialogTitle;
+        return this;
     }
 
     public NewItemDialog setItems(ArrayList<NewFeatureItem> newFeatureItemArraylist) {
@@ -40,7 +50,7 @@ public class NewItemDialog {
     public void showDialog() {
 
         try {
-            WhatIsNewDialogFragment newFragment = WhatIsNewDialogFragment.newInstance(mNewFeatureItemArrayList);
+            WhatIsNewDialogFragment newFragment = WhatIsNewDialogFragment.newInstance(mNewFeatureItemArrayList, mDialogTitle);
 
             FragmentTransaction transaction = mActivity.getSupportFragmentManager().beginTransaction();
             transaction.add(newFragment, "dialog");

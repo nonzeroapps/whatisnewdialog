@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<NewFeatureItem> arrayList = new ArrayList<>();
 
         NewFeatureItem newFeatureItem = new NewFeatureItem();
-        newFeatureItem.setFeatureDesc("test111");
-        newFeatureItem.setFeatureTitle("Yeni Özellik Bir");
+        newFeatureItem.setFeatureDesc("From now on, you can search all things with keys. For searching please go to ");
+        newFeatureItem.setFeatureTitle("Searching");
         newFeatureItem.setImageUrl("https://media.giphy.com/media/uysHTqjZ67REQ/giphy.gif");
         arrayList.add(newFeatureItem);
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         newFeatureItem5.setImageUrl("https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3aXcyajZDN29jS1k/components_dialogs_confirmation2.png");
         arrayList.add(newFeatureItem5);
 
-        NewItemDialog.init(this).setItems(arrayList).showDialog();
+        NewItemDialog.init(this).setDialogTitle("New Features of 1.2.0 Version!").setItems(arrayList).showDialog();
 
     }
 }
