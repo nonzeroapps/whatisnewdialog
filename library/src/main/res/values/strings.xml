@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">WhatIsNew</string>
+    <string name="version_name">1.0.0</string>
+    <string name="new_features_dialog_title">What Is New In This Version!</string>
+    <string name="ok">OK</string>
+    <string name="close">Close</string>
+    <string name="remind_me_later">Remind Me Later</string>
 </resources>

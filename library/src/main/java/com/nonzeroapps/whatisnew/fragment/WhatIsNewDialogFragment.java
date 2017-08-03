@@ -2,6 +2,8 @@ package com.nonzeroapps.whatisnew.fragment;
 
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -13,7 +15,9 @@ import android.widget.ImageView;
 import com.nonzeroapps.whatisnew.R;
 import com.nonzeroapps.whatisnew.adapter.ImageViewPagerAdapter;
 import com.nonzeroapps.whatisnew.listener.OnSetImageListener;
+import com.nonzeroapps.whatisnew.object.DialogSettings;
 import com.nonzeroapps.whatisnew.object.NewFeatureItem;
+import com.nonzeroapps.whatisnew.util.SharedPrefHelper;
 
 import java.util.ArrayList;
 
@@ -24,43 +28,79 @@ import java.util.ArrayList;
 public class WhatIsNewDialogFragment extends DialogFragment {
 
     private static final String NEW_FEATURE_ITEM_LIST = "newFeatureItemList";
-    private static final String DIALOG_TITLE = "dialogTitle";
+    private static final String DIALOG_SETTINGS = "dialogSettings";
 
     private ViewPager mImageViewPager;
     private ArrayList<NewFeatureItem> mNewFeatureItemArrayList;
-    private String mDialogTitle;
+    private DialogInterface.OnClickListener mPositiveButtonListener;
+    private DialogInterface.OnClickListener mNeutralButtonListener;
 
-    public static WhatIsNewDialogFragment newInstance(ArrayList<NewFeatureItem> newFeatureItemArrayList, String dialogTitle) {
-        WhatIsNewDialogFragment f = new WhatIsNewDialogFragment();
+    public static WhatIsNewDialogFragment newInstance(ArrayList<NewFeatureItem> newFeatureItemArrayList, DialogSettings dialogSettings, DialogInterface.OnClickListener positiveButtonListener, DialogInterface.OnClickListener neutralButtonListener) {
+        WhatIsNewDialogFragment whatIsNewDialogFragment = new WhatIsNewDialogFragment();
 
-        // Supply num input as an argument.
+        whatIsNewDialogFragment.setPositiveButtonListener(positiveButtonListener);
+        whatIsNewDialogFragment.setNeutralButtonListener(neutralButtonListener);
+
         Bundle args = new Bundle();
         args.putParcelableArrayList(NEW_FEATURE_ITEM_LIST, newFeatureItemArrayList);
-        args.putString(DIALOG_TITLE, dialogTitle);
-        f.setArguments(args);
+        args.putParcelable(DIALOG_SETTINGS, dialogSettings);
+        whatIsNewDialogFragment.setArguments(args);
 
-        return f;
+        return whatIsNewDialogFragment;
     }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
+        final Context context = getContext();
+
         View view = getActivity().getLayoutInflater().inflate(R.layout.newfeaturedialog, null);
 
         mNewFeatureItemArrayList = getArguments().getParcelableArrayList(NEW_FEATURE_ITEM_LIST);
-        mDialogTitle = getArguments().getString(DIALOG_TITLE);
+        final DialogSettings dialogSettings = getArguments().getParcelable(DIALOG_SETTINGS);
         mImageViewPager = (ViewPager) view.findViewById(R.id.viewPager);
 
         initPage();
 
-        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-                .setView(view)
-                .setTitle(mDialogTitle)
-                .setPositiveButton("Kapat", null)
-                .setNegativeButton("Sonra Tekrar Göster", null)
-                .create();
-        return alertDialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setView(view);
+
+        if (dialogSettings != null) {
+            if (dialogSettings.isShowTitle()) {
+                builder.setTitle(dialogSettings.getTitleText(context));
+            }
+
+            if (dialogSettings.isShowPositiveButton()) {
+                builder.setPositiveButton(dialogSettings.getPositiveText(context), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPrefHelper.setSeenBefore(context, dialogSettings.getVersionName(context), true);
+
+                        if (mPositiveButtonListener != null) {
+                            mPositiveButtonListener.onClick(dialog, which);
+                        }
+                    }
+                });
+            }
+
+            if (dialogSettings.isShowNeutralButton()) {
+                builder.setNeutralButton(dialogSettings.getNeutralText(context), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPrefHelper.setSeenBefore(context, dialogSettings.getVersionName(context), true);
+
+                        if (mNeutralButtonListener != null) {
+                            mNeutralButtonListener.onClick(dialog, which);
+                        }
+                    }
+                });
+            }
+
+            builder.setCancelable(dialogSettings.isCancelable());
+        }
+
+        return builder.create();
     }
 
     private void initPage() {
@@ -72,5 +112,13 @@ public class WhatIsNewDialogFragment extends DialogFragment {
         }, mNewFeatureItemArrayList);
 
         mImageViewPager.setAdapter(adapter);
+    }
+
+    public void setPositiveButtonListener(DialogInterface.OnClickListener positiveButtonListener) {
+        mPositiveButtonListener = positiveButtonListener;
+    }
+
+    public void setNeutralButtonListener(DialogInterface.OnClickListener neutralButtonListener) {
+        mNeutralButtonListener = neutralButtonListener;
     }
 }
