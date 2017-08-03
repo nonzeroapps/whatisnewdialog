@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //test
+        //test 2
         // Create and show the dialog.
 
         ArrayList<NewFeatureItem> arrayList = new ArrayList<>();
