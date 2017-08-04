@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         NewItemDialog
                 .init(this)
+                .setVersionName("1.2.0")
                 .setDialogTitle("New Features of 1.2.0 Version!")
                 .setItems(arrayList)
                 .setCancelButtonListener(new DialogInterface.OnClickListener() {

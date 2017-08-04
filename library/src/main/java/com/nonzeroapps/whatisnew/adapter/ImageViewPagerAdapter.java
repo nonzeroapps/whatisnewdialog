@@ -60,6 +60,7 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
         final ScrollView scrollView = (ScrollView) view.findViewById(R.id.scrollViewTextHolder);
         final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearLayout);
         final ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        final View progress = view.findViewById(R.id.progress);
         final TextView textViewDesc = (TextView) view.findViewById(R.id.textViewDesc);
         final TextView textViewTitle = (TextView) view.findViewById(R.id.textViewTitle);
 
@@ -78,7 +79,7 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
         textViewTitle.setText(newFeatureItem.getFeatureTitle());
         imageView.setContentDescription(newFeatureItem.getFeatureTitle());
 
-
+        progress.setVisibility(View.VISIBLE);
         ViewTreeObserver vto = imageView.getViewTreeObserver();
         vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             public boolean onPreDraw() {
@@ -99,12 +100,13 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
                         .listener(new RequestListener<Object, GlideDrawable>() {
                             @Override
                             public boolean onException(Exception e, Object model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                progress.setVisibility(View.GONE);
                                 return false;
                             }
 
                             @Override
                             public boolean onResourceReady(GlideDrawable resource, Object model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-
+                                progress.setVisibility(View.GONE);
                                 Bitmap bitmap;
 
                                 if (resource instanceof GifDrawable) {
