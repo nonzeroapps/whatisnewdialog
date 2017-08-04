@@ -79,12 +79,14 @@ public final class NewItemDialog {
         return this;
     }
 
-    public void setCancelButtonListener(DialogInterface.OnClickListener cancelButtonListener) {
+    public NewItemDialog setCancelButtonListener(DialogInterface.OnClickListener cancelButtonListener) {
         this.mPositiveButtonListener = cancelButtonListener;
+        return this;
     }
 
-    public void setShowLaterButtonListener(DialogInterface.OnClickListener showLaterButtonListener) {
+    public NewItemDialog setShowLaterButtonListener(DialogInterface.OnClickListener showLaterButtonListener) {
         this.mNegativeButtonListener = showLaterButtonListener;
+        return this;
     }
 
     public NewItemDialog setItems(ArrayList<NewFeatureItem> newFeatureItemArraylist) {

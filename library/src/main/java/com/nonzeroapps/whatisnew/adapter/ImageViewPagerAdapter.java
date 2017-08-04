@@ -1,5 +1,7 @@
 package com.nonzeroapps.whatisnew.adapter;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
@@ -9,9 +11,12 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -22,6 +27,7 @@ import com.nonzeroapps.whatisnew.R;
 import com.nonzeroapps.whatisnew.listener.OnItemClickListener;
 import com.nonzeroapps.whatisnew.listener.OnSetImageListener;
 import com.nonzeroapps.whatisnew.object.NewFeatureItem;
+import com.nonzeroapps.whatisnew.util.Util;
 
 import java.util.ArrayList;
 
@@ -35,7 +41,9 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
     private OnItemClickListener mOnPagerItemClick;
     private OnSetImageListener mOnSetImageListener;
     private ArrayList<NewFeatureItem> mNewFeatureItems;
-    int finalHeight, finalWidth;
+    private View mBackground;
+    private int finalHeight, finalWidth;
+
 
     public ImageViewPagerAdapter(Context context, @NonNull OnSetImageListener onSetImageListener, ArrayList<NewFeatureItem> newFeatureItems) {
         mContext = context;
@@ -49,6 +57,7 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_view_pager_image, null);
 
+        final ScrollView scrollView = (ScrollView) view.findViewById(R.id.scrollViewTextHolder);
         final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearLayout);
         final ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         final TextView textViewDesc = (TextView) view.findViewById(R.id.textViewDesc);
@@ -77,16 +86,24 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
                 finalHeight = imageView.getMeasuredHeight();
                 finalWidth = imageView.getMeasuredWidth();
 
-                Glide.with(mContext)
-                        .load(newFeatureItem.getImageUrl())
-                        .listener(new RequestListener<String, GlideDrawable>() {
+
+                RequestManager requestManager = Glide.with(mContext);
+
+                DrawableTypeRequest drawableTypeRequest;
+                if (newFeatureItem.getImageResource() == null) {
+                    drawableTypeRequest = requestManager.load(newFeatureItem.getImageDrawableResource());
+                } else {
+                    drawableTypeRequest = requestManager.load(newFeatureItem.getImageResource());
+                }
+                drawableTypeRequest
+                        .listener(new RequestListener<Object, GlideDrawable>() {
                             @Override
-                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            public boolean onException(Exception e, Object model, Target<GlideDrawable> target, boolean isFirstResource) {
                                 return false;
                             }
 
                             @Override
-                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                            public boolean onResourceReady(GlideDrawable resource, Object model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
 
                                 Bitmap bitmap;
 
@@ -102,15 +119,29 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
                                         @Override
                                         public void onGenerated(Palette palette) {
                                             int whiteColor = mContext.getResources().getColor(android.R.color.white);
-                                            imageView.setBackgroundColor(palette.getDominantColor(whiteColor));
-                                            linearLayout.setBackgroundColor(palette.getDominantColor(whiteColor));
+                                            int blackColor = mContext.getResources().getColor(android.R.color.black);
+                                            int dominantColor = palette.getDominantColor(whiteColor);
+                                            int contrastColor = Util.getContrastColor(palette.getDominantColor(whiteColor));
 
-                                            Palette.Swatch swatch = palette.getMutedSwatch();
+                                            ObjectAnimator colorAnim = ObjectAnimator.ofInt(imageView, "backgroundColor", whiteColor, dominantColor);
+                                            colorAnim.setEvaluator(new ArgbEvaluator());
+                                            colorAnim.setDuration(500)
+                                                    .start();
 
-                                            if (swatch != null) {
-                                                textViewTitle.setTextColor(swatch.getTitleTextColor());
-                                                textViewDesc.setTextColor(swatch.getBodyTextColor());
-                                            }
+                                            ObjectAnimator colorAnim2 = ObjectAnimator.ofInt(linearLayout, "backgroundColor", whiteColor, dominantColor);
+                                            colorAnim2.setEvaluator(new ArgbEvaluator());
+                                            colorAnim2.setDuration(500)
+                                                    .start();
+
+                                            ObjectAnimator colorAnim3 = ObjectAnimator.ofInt(textViewTitle, "textColor", blackColor, contrastColor);
+                                            colorAnim3.setEvaluator(new ArgbEvaluator());
+                                            colorAnim3.setDuration(500)
+                                                    .start();
+
+                                            ObjectAnimator colorAnim4 = ObjectAnimator.ofInt(textViewDesc, "textColor", blackColor, contrastColor);
+                                            colorAnim4.setEvaluator(new ArgbEvaluator());
+                                            colorAnim4.setDuration(500)
+                                                    .start();
                                         }
                                     });
                                 }

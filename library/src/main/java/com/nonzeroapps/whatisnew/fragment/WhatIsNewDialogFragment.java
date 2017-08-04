@@ -18,8 +18,12 @@ import com.nonzeroapps.whatisnew.listener.OnSetImageListener;
 import com.nonzeroapps.whatisnew.object.DialogSettings;
 import com.nonzeroapps.whatisnew.object.NewFeatureItem;
 import com.nonzeroapps.whatisnew.util.SharedPrefHelper;
+import com.nonzeroapps.whatisnew.view.InkPageIndicator;
+import com.xgc1986.parallaxPagerTransformer.ParallaxPagerTransformer;
 
 import java.util.ArrayList;
+
+import static com.nonzeroapps.whatisnew.R.id.viewPager;
 
 /**
  * Created by berkayturanci on 01/08/2017.
@@ -31,6 +35,7 @@ public class WhatIsNewDialogFragment extends DialogFragment {
     private static final String DIALOG_SETTINGS = "dialogSettings";
 
     private ViewPager mImageViewPager;
+    private InkPageIndicator mInkPageIndicator;
     private ArrayList<NewFeatureItem> mNewFeatureItemArrayList;
     private DialogInterface.OnClickListener mPositiveButtonListener;
     private DialogInterface.OnClickListener mNeutralButtonListener;
@@ -59,7 +64,9 @@ public class WhatIsNewDialogFragment extends DialogFragment {
 
         mNewFeatureItemArrayList = getArguments().getParcelableArrayList(NEW_FEATURE_ITEM_LIST);
         final DialogSettings dialogSettings = getArguments().getParcelable(DIALOG_SETTINGS);
-        mImageViewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        mImageViewPager = (ViewPager) view.findViewById(viewPager);
+        mInkPageIndicator = (InkPageIndicator) view.findViewById(R.id.indicator);
+        mImageViewPager.setPageTransformer(false, new ParallaxPagerTransformer(R.id.imageView));
 
         initPage();
 
@@ -112,6 +119,7 @@ public class WhatIsNewDialogFragment extends DialogFragment {
         }, mNewFeatureItemArrayList);
 
         mImageViewPager.setAdapter(adapter);
+        mInkPageIndicator.setViewPager(mImageViewPager);
     }
 
     public void setPositiveButtonListener(DialogInterface.OnClickListener positiveButtonListener) {

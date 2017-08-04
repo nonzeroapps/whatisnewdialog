@@ -2,6 +2,7 @@ package com.nonzeroapps.whatisnew.object;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.DrawableRes;
 
 /**
  * Created by berkayturanci on 01/08/2017.
@@ -11,7 +12,8 @@ public class NewFeatureItem implements Parcelable {
 
     private String featureTitle;
     private String featureDesc;
-    private String imageUrl;
+    private String imageResource;
+    private int imageDrawableResource;
 
     public String getFeatureTitle() {
         return featureTitle;
@@ -29,12 +31,20 @@ public class NewFeatureItem implements Parcelable {
         this.featureDesc = featureDesc;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageResource() {
+        return imageResource;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageResource(String imageResource) {
+        this.imageResource = imageResource;
+    }
+
+    public void setImageResource(@DrawableRes int imageResource) {
+        imageDrawableResource = imageResource;
+    }
+
+    public int getImageDrawableResource() {
+        return imageDrawableResource;
     }
 
 
@@ -47,7 +57,8 @@ public class NewFeatureItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.featureTitle);
         dest.writeString(this.featureDesc);
-        dest.writeString(this.imageUrl);
+        dest.writeString(this.imageResource);
+        dest.writeInt(this.imageDrawableResource);
     }
 
     public NewFeatureItem() {
@@ -56,7 +67,8 @@ public class NewFeatureItem implements Parcelable {
     protected NewFeatureItem(Parcel in) {
         this.featureTitle = in.readString();
         this.featureDesc = in.readString();
-        this.imageUrl = in.readString();
+        this.imageResource = in.readString();
+        this.imageDrawableResource = in.readInt();
     }
 
     public static final Parcelable.Creator<NewFeatureItem> CREATOR = new Parcelable.Creator<NewFeatureItem>() {
