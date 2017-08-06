@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="new_features_dialog_title">Bu Sürümdeki Yenilikler</string>
+    <string name="remind_me_later">Daha Sonra Hatırlat</string>
+    <string name="ok">Tamam</string>
+    <string name="close">Kapat</string>
+</resources>

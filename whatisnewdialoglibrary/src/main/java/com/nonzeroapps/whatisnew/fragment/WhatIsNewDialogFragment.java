@@ -95,7 +95,6 @@ public class WhatIsNewDialogFragment extends DialogFragment {
                 builder.setNeutralButton(dialogSettings.getNeutralText(context), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPrefHelper.setSeenBefore(context, dialogSettings.getVersionName(context), true);
 
                         if (mNeutralButtonListener != null) {
                             mNeutralButtonListener.onClick(dialog, which);
