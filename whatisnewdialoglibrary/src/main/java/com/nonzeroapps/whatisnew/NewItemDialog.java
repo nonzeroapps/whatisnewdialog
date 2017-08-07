@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public final class NewItemDialog {
 
+    private static final String DIALOG_TAG = "whatIsNewDialogFragment";
+
     private static volatile NewItemDialog mNewItemDialog;
 
     private ArrayList<NewFeatureItem> mNewFeatureItemArrayList;
@@ -115,11 +117,13 @@ public final class NewItemDialog {
 
     public void showDialog(@NonNull AppCompatActivity activity) {
         try {
-            WhatIsNewDialogFragment newFragment = WhatIsNewDialogFragment.newInstance(mNewFeatureItemArrayList, mDialogSettings, mPositiveButtonListener, mNegativeButtonListener);
+            if (activity.getSupportFragmentManager().findFragmentByTag(DIALOG_TAG) == null) {
+                WhatIsNewDialogFragment newFragment = WhatIsNewDialogFragment.newInstance(mNewFeatureItemArrayList, mDialogSettings, mPositiveButtonListener, mNegativeButtonListener);
 
-            FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-            transaction.add(newFragment, "dialog");
-            transaction.commitAllowingStateLoss();
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                transaction.add(newFragment, DIALOG_TAG);
+                transaction.commitAllowingStateLoss();
+            }
         } catch (IllegalStateException ex) {
 
         }
