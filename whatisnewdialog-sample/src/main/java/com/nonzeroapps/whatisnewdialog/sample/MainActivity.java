@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         NewFeatureItem newFeatureItem = new NewFeatureItem();
         newFeatureItem.setFeatureDesc("From now on, you can search all things with keys. For searching please go to ");
         newFeatureItem.setFeatureTitle("Searching");
-        newFeatureItem.setImageResource("R.drawable.androidpicture");
+        newFeatureItem.setImageResource(R.drawable.androidpicture);
         arrayList.add(newFeatureItem);
 
         NewFeatureItem newFeatureItem2 = new NewFeatureItem();
