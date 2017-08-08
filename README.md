@@ -3,7 +3,7 @@
  
 What is new dialog for Android is used for presenting new features in the the app. It can be used in the activity starts, from menu or from a button. It is highly customizable and flexible. It has two options (customizable) where user can either select remind me later or close. Close selection will record that dialog for given version name is seen. So next time it won't be shown to the user. It uses Glide for showing gif and images. 
 
-![](preview/usage.gif)
+![](preview/newfeature.png) ![](preview/usage.gif)
 
 ## Installation
 
