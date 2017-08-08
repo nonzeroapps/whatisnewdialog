@@ -5,6 +5,21 @@ What is new dialog for Android is used for presenting new features in the the ap
 
 ![](preview/usage.gif)
 
+## Installation
+
+### Gradle(Coming Soon)
+You can download from maven central.
+
+Add it as a dependency in your app's build.gradle file
+
+${latest.version} is
+
+```groovy
+dependencies {
+    compile com.nonzeroapps.whatisnewdialog:whatisnewdialog:{latest.version}'
+}
+```
+
 ## Features
 - Add unlimited pages for dialog
 - Callbacks for buttons
@@ -86,16 +101,19 @@ NewItemDialog
 * Use `isConditionsSuitable()` to check if dialog is shown or not.
 * Use `clearSharedPref()` to delete condition storages.
 
-## Installation
+## Sample
+Have a look at the [sample](https://github.com/nonzeroapps/whatisnewdialog/tree/master/whatisnewdialog-sample).
 
-### Gradle(Coming Soon)
-Add it as a dependency in your app's build.gradle file
+## Support
+WhatIsNewDialog supports API level 16 and up.
 
-```groovy
-dependencies {
-    compile '
-}
-```
+## Contribute
+
+1. Fork it
+2. Create your own branch (git checkout -b new-feature-branch)
+3. Commit your changes (git commit -am 'Some features added')
+4. Push to the your own branch (git push origin new-feature-branch)
+5. Create new Pull Request
 
 ## Credits
 
