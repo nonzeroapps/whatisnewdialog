@@ -99,9 +99,9 @@ dependencies {
 
 ## Credits
 
-This project was initiated by **NonZeroApps**. You can contribute to this project by submitting issues or/and by forking this repo and sending a pull request.
+This project was initiated by [**NonZeroApps**](https://nonzeroapps.com). You can contribute to this project by submitting issues or/and by forking this repo and sending a pull request.
 
-![](https://nonzeroapps.com/images/nonzeroapps.png)
+![](preview/nonzeroapps.png)
 
 Author: [Berkay Turancı](https://github.com/berkayturanci)
 
