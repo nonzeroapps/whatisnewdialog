@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew;
+package com.nonzeroapps.whatisnewdialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -6,10 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.nonzeroapps.whatisnew.fragment.WhatIsNewDialogFragment;
-import com.nonzeroapps.whatisnew.object.DialogSettings;
-import com.nonzeroapps.whatisnew.object.NewFeatureItem;
-import com.nonzeroapps.whatisnew.util.SharedPrefHelper;
+import com.nonzeroapps.whatisnewdialog.fragment.WhatIsNewDialogFragment;
+import com.nonzeroapps.whatisnewdialog.object.DialogSettings;
+import com.nonzeroapps.whatisnewdialog.object.NewFeatureItem;
+import com.nonzeroapps.whatisnewdialog.util.SharedPrefHelper;
 
 import java.util.ArrayList;
 

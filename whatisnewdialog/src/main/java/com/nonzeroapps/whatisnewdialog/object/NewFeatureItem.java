@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.object;
+package com.nonzeroapps.whatisnewdialog.object;
 
 import android.os.Parcel;
 import android.os.Parcelable;

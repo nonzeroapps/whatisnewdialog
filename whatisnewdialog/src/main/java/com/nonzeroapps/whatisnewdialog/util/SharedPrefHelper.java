@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.util;
+package com.nonzeroapps.whatisnewdialog.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

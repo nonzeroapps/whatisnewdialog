@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.adapter;
+package com.nonzeroapps.whatisnewdialog.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

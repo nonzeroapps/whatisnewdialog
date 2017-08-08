@@ -1,13 +1,13 @@
-package com.nonzeroapps.whatisnew.sample;
+package com.nonzeroapps.whatisnewdialog.sample;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.nonzeroapps.android.whatisnew.sample.R;
-import com.nonzeroapps.whatisnew.NewItemDialog;
-import com.nonzeroapps.whatisnew.object.NewFeatureItem;
+import com.nonzeroapps.android.whatisnewdialog.sample.R;
+import com.nonzeroapps.whatisnewdialog.NewItemDialog;
+import com.nonzeroapps.whatisnewdialog.object.NewFeatureItem;
 
 import java.util.ArrayList;
 

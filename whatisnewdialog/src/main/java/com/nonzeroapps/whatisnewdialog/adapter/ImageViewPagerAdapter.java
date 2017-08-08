@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.adapter;
+package com.nonzeroapps.whatisnewdialog.adapter;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -23,11 +23,11 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.nonzeroapps.whatisnew.R;
-import com.nonzeroapps.whatisnew.listener.OnItemClickListener;
-import com.nonzeroapps.whatisnew.listener.OnSetImageListener;
-import com.nonzeroapps.whatisnew.object.NewFeatureItem;
-import com.nonzeroapps.whatisnew.util.Util;
+import com.nonzeroapps.whatisnewdialog.R;
+import com.nonzeroapps.whatisnewdialog.listener.OnItemClickListener;
+import com.nonzeroapps.whatisnewdialog.listener.OnSetImageListener;
+import com.nonzeroapps.whatisnewdialog.object.NewFeatureItem;
+import com.nonzeroapps.whatisnewdialog.util.Util;
 
 import java.util.ArrayList;
 

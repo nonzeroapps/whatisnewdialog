@@ -1,11 +1,12 @@
-package com.nonzeroapps.whatisnew.object;
+package com.nonzeroapps.whatisnewdialog.object;
 
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import com.nonzeroapps.whatisnew.R;
+import com.nonzeroapps.whatisnewdialog.R;
+
 
 /**
  * Created by berkayturanci on 02/08/2017.

@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.fragment;
+package com.nonzeroapps.whatisnewdialog.fragment;
 
 
 import android.app.Dialog;
@@ -12,18 +12,18 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.nonzeroapps.whatisnew.R;
-import com.nonzeroapps.whatisnew.adapter.ImageViewPagerAdapter;
-import com.nonzeroapps.whatisnew.listener.OnSetImageListener;
-import com.nonzeroapps.whatisnew.object.DialogSettings;
-import com.nonzeroapps.whatisnew.object.NewFeatureItem;
-import com.nonzeroapps.whatisnew.util.SharedPrefHelper;
-import com.nonzeroapps.whatisnew.view.InkPageIndicator;
+import com.nonzeroapps.whatisnewdialog.R;
+import com.nonzeroapps.whatisnewdialog.adapter.ImageViewPagerAdapter;
+import com.nonzeroapps.whatisnewdialog.listener.OnSetImageListener;
+import com.nonzeroapps.whatisnewdialog.object.DialogSettings;
+import com.nonzeroapps.whatisnewdialog.object.NewFeatureItem;
+import com.nonzeroapps.whatisnewdialog.util.SharedPrefHelper;
+import com.nonzeroapps.whatisnewdialog.view.InkPageIndicator;
 import com.xgc1986.parallaxPagerTransformer.ParallaxPagerTransformer;
 
 import java.util.ArrayList;
 
-import static com.nonzeroapps.whatisnew.R.id.viewPager;
+
 
 /**
  * Created by berkayturanci on 01/08/2017.
@@ -64,7 +64,7 @@ public class WhatIsNewDialogFragment extends DialogFragment {
 
         mNewFeatureItemArrayList = getArguments().getParcelableArrayList(NEW_FEATURE_ITEM_LIST);
         final DialogSettings dialogSettings = getArguments().getParcelable(DIALOG_SETTINGS);
-        mImageViewPager = (ViewPager) view.findViewById(viewPager);
+        mImageViewPager = (ViewPager) view.findViewById(R.id.viewPager);
         mInkPageIndicator = (InkPageIndicator) view.findViewById(R.id.indicator);
         mImageViewPager.setPageTransformer(false, new ParallaxPagerTransformer(R.id.imageView));
 

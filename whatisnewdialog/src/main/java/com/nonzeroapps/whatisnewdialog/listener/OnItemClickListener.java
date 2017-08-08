@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.listener;
+package com.nonzeroapps.whatisnewdialog.listener;
 
 import android.view.View;
 

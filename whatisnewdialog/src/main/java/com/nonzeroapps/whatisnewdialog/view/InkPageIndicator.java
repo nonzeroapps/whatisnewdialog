@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew.view;
+package com.nonzeroapps.whatisnewdialog.view;
 
 /**
  * Created by berkayturanci on 04/08/2017.
@@ -24,7 +24,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-import com.nonzeroapps.whatisnew.R;
+import com.nonzeroapps.whatisnewdialog.R;
 
 import java.util.Arrays;
 
