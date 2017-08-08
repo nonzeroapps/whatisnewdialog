@@ -1,4 +1,4 @@
-package com.nonzeroapps.berkayturanci.whatisnew;
+package com.nonzeroapps.whatisnewdialog.sample;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.nonzeroapps.whatisnew;
+package com.nonzeroapps.whatisnewdialog;
 
 import org.junit.Test;
 

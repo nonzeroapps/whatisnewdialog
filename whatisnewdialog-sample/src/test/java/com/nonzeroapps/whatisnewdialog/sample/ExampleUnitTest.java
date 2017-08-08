@@ -1,4 +1,4 @@
-package com.nonzeroapps.berkayturanci.whatisnew;
+package com.nonzeroapps.whatisnewdialog.sample;
 
 import org.junit.Test;
 
