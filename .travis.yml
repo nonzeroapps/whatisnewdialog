@@ -20,11 +20,5 @@ script:
 after_success:
   - .buildscript/deploy_snapshot.sh
 
-branches:
-  except:
-    - gh-pages
-
 notifications:
   email: false
-
-sudo: false
