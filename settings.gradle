@@ -1,1 +1,1 @@
-include ':whatisnew-sample', ':whatisnew'
+include ':whatisnewdialog-sample', ':whatisnewdialog'
