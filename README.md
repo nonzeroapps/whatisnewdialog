@@ -7,12 +7,12 @@ What is new dialog for Android is used for presenting new features in the the ap
 
 ## Installation
 
-### Gradle(Coming Soon)
+### Gradle
 You can download from maven central.
 
 Add it as a dependency in your app's build.gradle file
 
-${latest.version} is
+${latest.version} is  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.nonzeroapps.whatisnewdialog/whatisnewdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.nonzeroapps.whatisnewdialog/whatisnewdialog) 
 
 ```groovy
 dependencies {
