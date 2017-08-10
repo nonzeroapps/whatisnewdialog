@@ -16,7 +16,7 @@ ${latest.version} is  [![Maven Central](https://maven-badges.herokuapp.com/maven
 
 ```groovy
 dependencies {
-    compile com.nonzeroapps.whatisnewdialog:whatisnewdialog:{latest.version}'
+    compile 'com.nonzeroapps.whatisnewdialog:whatisnewdialog:{latest.version}'
 }
 ```
 
