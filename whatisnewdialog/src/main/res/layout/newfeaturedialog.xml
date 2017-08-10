@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.nonzeroapps.whatisnew.view.InkPageIndicator
+    <com.nonzeroapps.whatisnewdialog.view.InkPageIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
