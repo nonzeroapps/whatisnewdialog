@@ -153,22 +153,18 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
                         })
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .skipMemoryCache(true)
-                        .fitCenter()
-                        .override(finalWidth, finalHeight)
-                        .into(imageView);
+                        .fitCenter();
+
+                if (finalHeight != 0 && finalWidth != 0) {
+                    drawableTypeRequest.override(finalWidth, finalHeight);
+                }
+
+                drawableTypeRequest.into(imageView);
 
                 return true;
             }
         });
 
-
-//        if (mOnSetImageListener != null) {
-//
-//            mOnSetImageListener.setImage(imageView, position);
-//        } else {
-//
-//            imageView.setImageResource(mImageResources[position]);
-//        }
         return view;
     }
 
