@@ -5,14 +5,14 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-25.0.2
-    - android-25
+    - build-tools-26.0.2
+    - android-26
     - extra-google-google_play_services
     - extra-android-m2repository
     - extra-android-support
     - extra-google-m2repository
-    - sys-img-armeabi-v7a-android-22
-    - sys-img-armeabi-v7a-android-17
+    - sys-img-armeabi-v7a-android-25
+    - sys-img-armeabi-v7a-android-24
 
 before_install:
  - chmod +x gradlew
