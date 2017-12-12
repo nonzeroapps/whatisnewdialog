@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         NewFeatureItem newFeatureItem2 = new NewFeatureItem();
         newFeatureItem2.setFeatureTitle("Feature 2");
         newFeatureItem2.setFeatureDesc("You waited long for this feature, we know that!!!\n\n From now on, you can follow your friend with our application. This makes our application super and cool. Don't believe my words, try and see it. If you want another features like this please contact with us via e-mail or feedback button.");
-        newFeatureItem2.setImageResource("https://media.giphy.com/media/JltOMwYmi0VrO/giphy.gif");
+        newFeatureItem2.setImageResource("https://f1gr.hjfile.cn/pic/20170906/201709060335318628.gif");
         arrayList.add(newFeatureItem2);
 
         NewItemDialog
