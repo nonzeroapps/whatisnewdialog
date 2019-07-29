@@ -2,7 +2,7 @@ package com.nonzeroapps.whatisnewdialog.object;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 /**
  * Created by berkayturanci on 01/08/2017.

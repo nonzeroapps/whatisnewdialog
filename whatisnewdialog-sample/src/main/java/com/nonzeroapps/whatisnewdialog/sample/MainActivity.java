@@ -2,8 +2,9 @@ package com.nonzeroapps.whatisnewdialog.sample;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.nonzeroapps.android.whatisnewdialog.sample.R;
 import com.nonzeroapps.whatisnewdialog.NewItemDialog;

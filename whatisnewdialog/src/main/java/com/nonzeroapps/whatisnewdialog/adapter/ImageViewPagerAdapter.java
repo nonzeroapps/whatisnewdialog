@@ -6,16 +6,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.graphics.Palette;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
@@ -28,8 +27,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.nonzeroapps.whatisnewdialog.R;
-import com.nonzeroapps.whatisnewdialog.listener.OnItemClickListener;
-import com.nonzeroapps.whatisnewdialog.listener.OnSetImageListener;
 import com.nonzeroapps.whatisnewdialog.object.NewFeatureItem;
 import com.nonzeroapps.whatisnewdialog.util.Util;
 
@@ -42,43 +39,27 @@ import java.util.ArrayList;
 public class ImageViewPagerAdapter extends ViewPagerAdapter {
 
     private Context mContext;
-    private OnItemClickListener mOnPagerItemClick;
-    private OnSetImageListener mOnSetImageListener;
     private ArrayList<NewFeatureItem> mNewFeatureItems;
-    private View mBackground;
     private int finalHeight, finalWidth;
 
 
-    public ImageViewPagerAdapter(Context context, @NonNull OnSetImageListener onSetImageListener, ArrayList<NewFeatureItem> newFeatureItems) {
+    public ImageViewPagerAdapter(Context context, ArrayList<NewFeatureItem> newFeatureItems) {
         mContext = context;
-        mOnSetImageListener = onSetImageListener;
         mNewFeatureItems = newFeatureItems;
     }
 
     @Override
     public View getItem(final int position) {
 
-
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_view_pager_image, null);
 
-        final ScrollView scrollView = (ScrollView) view.findViewById(R.id.scrollViewTextHolder);
-        final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearLayout);
-        final ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        final LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
+        final ImageView imageView = view.findViewById(R.id.imageView);
         final View progress = view.findViewById(R.id.progress);
-        final TextView textViewDesc = (TextView) view.findViewById(R.id.textViewDesc);
-        final TextView textViewTitle = (TextView) view.findViewById(R.id.textViewTitle);
+        final TextView textViewDesc = view.findViewById(R.id.textViewDesc);
+        final TextView textViewTitle = view.findViewById(R.id.textViewTitle);
 
         final NewFeatureItem newFeatureItem = mNewFeatureItems.get(position);
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mOnPagerItemClick != null) {
-//                    mOnPagerItemClick.onPagerItemClick(v, position);
-//                }
-//            }
-//        });
-
-
         textViewDesc.setText(newFeatureItem.getFeatureDesc());
         textViewTitle.setText(newFeatureItem.getFeatureTitle());
         imageView.setContentDescription(newFeatureItem.getFeatureTitle());

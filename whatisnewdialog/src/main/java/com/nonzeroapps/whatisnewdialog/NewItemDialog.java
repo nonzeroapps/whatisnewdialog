@@ -2,9 +2,9 @@ package com.nonzeroapps.whatisnewdialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.nonzeroapps.whatisnewdialog.fragment.WhatIsNewDialogFragment;
 import com.nonzeroapps.whatisnewdialog.object.DialogSettings;

@@ -5,16 +5,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.nonzeroapps.whatisnewdialog.R;
 import com.nonzeroapps.whatisnewdialog.adapter.ImageViewPagerAdapter;
-import com.nonzeroapps.whatisnewdialog.listener.OnSetImageListener;
 import com.nonzeroapps.whatisnewdialog.object.DialogSettings;
 import com.nonzeroapps.whatisnewdialog.object.NewFeatureItem;
 import com.nonzeroapps.whatisnewdialog.util.SharedPrefHelper;
@@ -110,12 +109,7 @@ public class WhatIsNewDialogFragment extends DialogFragment {
     }
 
     private void initPage() {
-        ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getContext(), new OnSetImageListener() {
-            @Override
-            public void setImage(ImageView imageView, int position) {
-
-            }
-        }, mNewFeatureItemArrayList);
+        ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getContext(), mNewFeatureItemArrayList);
 
         mImageViewPager.setAdapter(adapter);
         mInkPageIndicator.setViewPager(mImageViewPager);

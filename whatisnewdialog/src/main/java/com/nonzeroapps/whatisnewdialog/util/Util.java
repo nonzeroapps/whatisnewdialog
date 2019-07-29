@@ -1,7 +1,7 @@
 package com.nonzeroapps.whatisnewdialog.util;
 
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 /**
  * Created by berkayturanci on 04/08/2017.
