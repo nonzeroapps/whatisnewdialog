@@ -12,16 +12,16 @@ You can download from jitpack.
 
 Add it as a dependency in your app's build.gradle file
 
-${latest.version} is  1.0.4
+Latest Version is  1.0.4
 
 ```groovy
 
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+	maven { url 'https://jitpack.io' }
+    }
+}
  
  
 dependencies {
