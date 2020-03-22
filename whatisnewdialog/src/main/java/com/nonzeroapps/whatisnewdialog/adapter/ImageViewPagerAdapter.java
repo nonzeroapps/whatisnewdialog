@@ -41,11 +41,15 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
     private Context mContext;
     private ArrayList<NewFeatureItem> mNewFeatureItems;
     private int finalHeight, finalWidth;
+    private boolean mUsePaletteForDescBackground, mUsePaletteForImageBackground;
 
-
-    public ImageViewPagerAdapter(Context context, ArrayList<NewFeatureItem> newFeatureItems) {
+    public ImageViewPagerAdapter(Context context, ArrayList<NewFeatureItem> newFeatureItems,
+                                 boolean usePaletteForDescBackground,
+                                 boolean usePaletteForImageBackground) {
         mContext = context;
         mNewFeatureItems = newFeatureItems;
+        mUsePaletteForDescBackground = usePaletteForDescBackground;
+        mUsePaletteForImageBackground = usePaletteForImageBackground;
     }
 
     @Override

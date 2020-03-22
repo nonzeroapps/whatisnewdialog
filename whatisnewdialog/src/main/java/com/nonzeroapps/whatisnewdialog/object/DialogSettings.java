@@ -19,6 +19,8 @@ final public class DialogSettings implements Parcelable {
     private int textPositiveResId = R.string.close;
     private int textNeutralResId = R.string.remind_me_later;
 
+    private boolean usePaletteForDescBackground = true;
+    private boolean usePaletteForImageBackground = true;
     private boolean showNeutralButton = true;
     private boolean showPositiveButton = true;
     private boolean showTitle = true;
@@ -51,6 +53,22 @@ final public class DialogSettings implements Parcelable {
 
     public void setTextNeutralResId(int textNeutralResId) {
         this.textNeutralResId = textNeutralResId;
+    }
+
+    public boolean usePaletteForDescBackground() {
+        return usePaletteForDescBackground;
+    }
+
+    public void setUsePaletteForDescBackground(boolean usePaletteForDescBackground) {
+        this.usePaletteForDescBackground = usePaletteForDescBackground;
+    }
+
+    public boolean usePaletteForImageBackground() {
+        return usePaletteForImageBackground;
+    }
+
+    public void setUsePaletteForImageBackground(boolean usePaletteForImageBackground) {
+        this.usePaletteForImageBackground = usePaletteForImageBackground;
     }
 
     public boolean isShowNeutralButton() {
@@ -140,6 +158,8 @@ final public class DialogSettings implements Parcelable {
         dest.writeInt(this.titleResId);
         dest.writeInt(this.textPositiveResId);
         dest.writeInt(this.textNeutralResId);
+        dest.writeByte(this.usePaletteForDescBackground ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.usePaletteForImageBackground ? (byte) 1 : (byte) 0);
         dest.writeByte(this.showNeutralButton ? (byte) 1 : (byte) 0);
         dest.writeByte(this.showPositiveButton ? (byte) 1 : (byte) 0);
         dest.writeByte(this.showTitle ? (byte) 1 : (byte) 0);
@@ -157,6 +177,8 @@ final public class DialogSettings implements Parcelable {
         this.titleResId = in.readInt();
         this.textPositiveResId = in.readInt();
         this.textNeutralResId = in.readInt();
+        this.usePaletteForDescBackground = in.readByte() != 0;
+        this.usePaletteForImageBackground = in.readByte() != 0;
         this.showNeutralButton = in.readByte() != 0;
         this.showPositiveButton = in.readByte() != 0;
         this.showTitle = in.readByte() != 0;

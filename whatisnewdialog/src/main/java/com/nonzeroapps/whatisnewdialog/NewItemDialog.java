@@ -61,6 +61,16 @@ public final class NewItemDialog {
         return this;
     }
 
+    public NewItemDialog setUsePaletteForDescBackground(boolean usePaletteForDescBackground) {
+        mDialogSettings.setUsePaletteForDescBackground(usePaletteForDescBackground);
+        return this;
+    }
+
+    public NewItemDialog setUsePaletteForImageBackground(boolean usePaletteForImageBackground) {
+        mDialogSettings.setUsePaletteForImageBackground(usePaletteForImageBackground);
+        return this;
+    }
+
     public NewItemDialog setShowLaterButton(boolean isShowNeutralButton) {
         mDialogSettings.setShowNeutralButton(isShowNeutralButton);
         return this;
