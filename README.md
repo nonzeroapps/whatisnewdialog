@@ -1,33 +1,18 @@
 # WhatIsNewDialog
- [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16) [![Build Status](https://travis-ci.org/nonzeroapps/whatisnewdialog.svg?branch=master)](https://travis-ci.org/nonzeroapps/whatisnewdialog)
+ [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16) [![](https://jitpack.io/v/nonzeroapps/whatisnewdialog.svg)](https://jitpack.io/#nonzeroapps/whatisnewdialog)
  
 What is new dialog for Android is used for presenting new features in the the app. It can be used in the activity starts, from menu or from a button. It is highly customizable and flexible. It has two options (customizable) where user can either select remind me later or close. Close selection will record that dialog for given version name is seen. So next time it won't be shown to the user. It uses Glide for showing gif and images. 
 
 ![](preview/usage.gif)
+![](preview/darkMode1.png)
+![](preview/darkMode2.png)
 
 ## Installation
 
 ### Gradle
 You can download from jitpack.
 
-Add it as a dependency in your app's build.gradle file
-
-Latest Version is  1.0.5
-
-```groovy
-
-allprojects {
-    repositories {
-        ...
-	maven { url 'https://jitpack.io' }
-    }
-}
- 
- 
-dependencies {
-   implementation 'com.github.nonzeroapps:whatisnewdialog:1.0.5'
-}
-```
+https://jitpack.io/#nonzeroapps/whatisnewdialog
 
 ## Features
 - Add unlimited pages for dialog
