@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 .setDialogTitle("New Features of 1.2.0 Version!")
                 .setPositiveButtonTitle("Close")
                 .setNeutralButtonTitle("Show Me Later")
+                .setUsePaletteForDescBackground(false)
+                .setUsePaletteForImageBackground(false)
                 .setCancelable(false)
                 .setItems(arrayList)
                 .setCancelButtonListener(new DialogInterface.OnClickListener() {

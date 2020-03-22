@@ -23,7 +23,6 @@ import com.xgc1986.parallaxPagerTransformer.ParallaxPagerTransformer;
 import java.util.ArrayList;
 
 
-
 /**
  * Created by berkayturanci on 01/08/2017.
  */
@@ -67,7 +66,7 @@ public class WhatIsNewDialogFragment extends DialogFragment {
         mInkPageIndicator = (InkPageIndicator) view.findViewById(R.id.indicator);
         mImageViewPager.setPageTransformer(false, new ParallaxPagerTransformer(R.id.imageView));
 
-        initPage();
+        initPage(dialogSettings);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setView(view);
@@ -108,8 +107,10 @@ public class WhatIsNewDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void initPage() {
-        ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getContext(), mNewFeatureItemArrayList);
+    private void initPage(DialogSettings dialogSettings) {
+        ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getContext(), mNewFeatureItemArrayList,
+                dialogSettings.usePaletteForDescBackground(),
+                dialogSettings.usePaletteForImageBackground());
 
         mImageViewPager.setAdapter(adapter);
         mInkPageIndicator.setViewPager(mImageViewPager);

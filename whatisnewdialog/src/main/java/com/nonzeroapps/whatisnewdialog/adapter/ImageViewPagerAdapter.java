@@ -41,11 +41,15 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
     private Context mContext;
     private ArrayList<NewFeatureItem> mNewFeatureItems;
     private int finalHeight, finalWidth;
+    private boolean mUsePaletteForDescBackground, mUsePaletteForImageBackground;
 
-
-    public ImageViewPagerAdapter(Context context, ArrayList<NewFeatureItem> newFeatureItems) {
+    public ImageViewPagerAdapter(Context context, ArrayList<NewFeatureItem> newFeatureItems,
+                                 boolean usePaletteForDescBackground,
+                                 boolean usePaletteForImageBackground) {
         mContext = context;
         mNewFeatureItems = newFeatureItems;
+        mUsePaletteForDescBackground = usePaletteForDescBackground;
+        mUsePaletteForImageBackground = usePaletteForImageBackground;
     }
 
     @Override
@@ -147,6 +151,12 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
     }
 
     private void putBackgroundColors(Bitmap bitmap, final ImageView imageView, final LinearLayout linearLayout, final TextView textViewTitle, final TextView textViewDesc) {
+
+        boolean usePalette = mUsePaletteForDescBackground || mUsePaletteForImageBackground;
+        if (!usePalette) {
+            return;
+        }
+
         if (bitmap != null && !bitmap.isRecycled()) {
 
             Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
@@ -157,25 +167,29 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
                     int dominantColor = palette.getDominantColor(whiteColor);
                     int contrastColor = Util.getContrastColor(palette.getDominantColor(whiteColor));
 
-                    ObjectAnimator colorAnim = ObjectAnimator.ofInt(imageView, "backgroundColor", whiteColor, dominantColor);
-                    colorAnim.setEvaluator(new ArgbEvaluator());
-                    colorAnim.setDuration(500)
-                            .start();
+                    if (mUsePaletteForImageBackground) {
+                        ObjectAnimator colorAnim = ObjectAnimator.ofInt(imageView, "backgroundColor", whiteColor, dominantColor);
+                        colorAnim.setEvaluator(new ArgbEvaluator());
+                        colorAnim.setDuration(500)
+                                .start();
+                    }
 
-                    ObjectAnimator colorAnim2 = ObjectAnimator.ofInt(linearLayout, "backgroundColor", whiteColor, dominantColor);
-                    colorAnim2.setEvaluator(new ArgbEvaluator());
-                    colorAnim2.setDuration(500)
-                            .start();
+                    if (mUsePaletteForDescBackground) {
+                        ObjectAnimator colorAnim2 = ObjectAnimator.ofInt(linearLayout, "backgroundColor", whiteColor, dominantColor);
+                        colorAnim2.setEvaluator(new ArgbEvaluator());
+                        colorAnim2.setDuration(500)
+                                .start();
 
-                    ObjectAnimator colorAnim3 = ObjectAnimator.ofInt(textViewTitle, "textColor", blackColor, contrastColor);
-                    colorAnim3.setEvaluator(new ArgbEvaluator());
-                    colorAnim3.setDuration(500)
-                            .start();
+                        ObjectAnimator colorAnim3 = ObjectAnimator.ofInt(textViewTitle, "textColor", blackColor, contrastColor);
+                        colorAnim3.setEvaluator(new ArgbEvaluator());
+                        colorAnim3.setDuration(500)
+                                .start();
 
-                    ObjectAnimator colorAnim4 = ObjectAnimator.ofInt(textViewDesc, "textColor", blackColor, contrastColor);
-                    colorAnim4.setEvaluator(new ArgbEvaluator());
-                    colorAnim4.setDuration(500)
-                            .start();
+                        ObjectAnimator colorAnim4 = ObjectAnimator.ofInt(textViewDesc, "textColor", blackColor, contrastColor);
+                        colorAnim4.setEvaluator(new ArgbEvaluator());
+                        colorAnim4.setDuration(500)
+                                .start();
+                    }
                 }
             });
         }

@@ -2,6 +2,7 @@ package com.nonzeroapps.whatisnewdialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +54,21 @@ public final class NewItemDialog {
 
     public NewItemDialog setPositiveButtonTitle(String positiveButtonTitle) {
         mDialogSettings.setPositiveText(positiveButtonTitle);
+        return this;
+    }
+
+    /**
+     * It is used for
+     * @param usePaletteForDescBackground
+     * @return
+     */
+    public NewItemDialog setUsePaletteForDescBackground(boolean usePaletteForDescBackground) {
+        mDialogSettings.setUsePaletteForDescBackground(usePaletteForDescBackground);
+        return this;
+    }
+
+    public NewItemDialog setUsePaletteForImageBackground(boolean usePaletteForImageBackground) {
+        mDialogSettings.setUsePaletteForImageBackground(usePaletteForImageBackground);
         return this;
     }
 
