@@ -12,7 +12,7 @@ You can download from jitpack.
 
 Add it as a dependency in your app's build.gradle file
 
-Latest Version is  1.0.4
+Latest Version is  1.0.5
 
 ```groovy
 
@@ -25,7 +25,7 @@ allprojects {
  
  
 dependencies {
-   implementation 'com.github.nonzeroapps:whatisnewdialog:1.0.4'
+   implementation 'com.github.nonzeroapps:whatisnewdialog:1.0.5'
 }
 ```
 
@@ -41,6 +41,7 @@ dependencies {
 - Customizable button and title colors (It uses the activity style)
 - Override dialog redirection to Google Play or Feedback form according to your needs
 - Low memory usage
+- Can be used For Night Mode too
 
 If you want the dialog to appear on the start of the app, just add the `showDialogIfConditionsSuitable(activity)` to the `onCreate()` method of your Activity class. The dialog will appear when the app is opened and the condition is satisfied.
 
@@ -89,6 +90,8 @@ NewItemDialog
     .setNeutralButtonTitle("Show Me Later")
     .setCancelable(false)
     .setItems(arrayList)
+    .setUsePaletteForDescBackground(false) //This can be used for adjusting not using palette (Can be Used For Night Mode)
+    .setUsePaletteForImageBackground(false) //This can be used for adjusting not using palette (Can be Used For Night Mode)
     .setCancelButtonListener(new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
